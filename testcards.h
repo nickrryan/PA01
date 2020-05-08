@@ -9,24 +9,28 @@
 #define TESTCARDS_H
 
 #include <iostream>
+#include "cards.h"
 
 using namespace std;
-void runAll();
-void test_constructor();
-void test_append();
-void test_equal();
-void test_card();
-/*
-void test_destructor();
-void test_remove();
-void test_search();
 
-*/
-void test_append_empty_list(); // A test case for append
-void test_append_single_element_list(); // Tests cases should be independent,
-            // small, fast, orthogonal
-void test_equal_empty_list();
-void test_card_operator_double_equal();
+void runAll();
+
+void test_card();
+void test_card_suit_getset();
+void test_card_num_getset();
+void test_card_next_getset();
+void test_card_operator_equalsequals();
+
+void test_cardlist();
+void test_cardlist_first_get();
+void test_cardlist_append();
+void test_cardlist_remove();
+void test_cardlist_find();
+
+void test_player();
+void test_player_name_get();
+void test_player_taketurn();
+void test_player_findremovecard();
 
 void START_TEST(string testname){
   cout<<"Start "<<testname<<endl;
@@ -44,6 +48,14 @@ void assertEquals(string expected, string actual, string testDescription){
   }
 }
 
+void assertEquals(char expected, char actual, string testDescription){
+   if (expected == actual) {
+     cout<<"PASSED " << endl;
+   } else {
+     cout<< "  FAILED: "<< testDescription << endl <<"   Expected: "<< expected << " Actual: " << actual << endl;
+   }
+ }
+
 void assertEquals(int expected, int actual, string testDescription){
   if (expected == actual) {
     cout<<"PASSED " << endl;
@@ -52,16 +64,37 @@ void assertEquals(int expected, int actual, string testDescription){
   }
 }
 
-// You should add more assertEquals function for your classes. For example, Node/Card class
-/*
-void assertEquals(Node *expected, Node *actual, string testDescription){
+void assertEquals(const Card& expected, const Card& actual, string testDescription){
   if (expected == actual) {
     cout<<"PASSED " << endl;
   } else {
     cout<< "  FAILED: "<< testDescription << endl <<"   Expected: "<< expected << " Actual: " << actual << endl;
   }
 }
-*/
+
+ void assertIsNull(Card* card, string testDescription){
+   if (!card) {
+     cout<<"PASSED " << endl;
+   } else {
+     cout<< "  FAILED: "<< testDescription << endl <<"   Expected: NULL  Actual: Not NULL"  << endl;
+   }
+ }
+
+  void assertIsNotNull(Card* card, string testDescription){
+     if (card) {
+       cout<<"PASSED " << endl;
+     } else {
+       cout<< "  FAILED: "<< testDescription << endl <<"   Expected: Not NULL  Actual: NULL" << endl;
+     }
+   }
+
+void assertEquals(bool expected, bool actual, string testDescription){
+	if(expected == actual) {
+		cout << "PASSED " << endl;
+	} else {
+		cout<< "  FAILED: " << testDescription << endl << "   Expected: " << expected << " Actual: " << actual << endl;
+	}
+}
 
 
 #endif
