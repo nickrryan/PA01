@@ -147,3 +147,4 @@ bool Player::findRemoveCard(Card* card) {
 	}
 	return false;
 }
+
