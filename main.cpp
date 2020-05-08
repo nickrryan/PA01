@@ -62,7 +62,7 @@ int main(int argv, char** argc){
 	 currentCard = currentTurnPlayer->takeTurn();
   }
 
-  cout << endl << player1 << endl;
+  cout << endl << player1;
   cout << player2;
 
   return 0;
