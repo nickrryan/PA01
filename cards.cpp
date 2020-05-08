@@ -127,7 +127,7 @@ string Player::getName() const {
 }
 std::ostream& operator<< (std::ostream& os, const Player& random) {
 	os << random.name << "'s cards:" <<  endl;
-	os << *random.hand << endl;
+	os << *random.hand;
 	return os;
 }
 Card* Player::takeTurn() {
